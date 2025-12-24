@@ -244,6 +244,7 @@ footer {
   .strategic-grid {
     text-align: center !important;
     gap: 2rem !important;
+    grid-template-columns: 1fr !important;
   }
 
   .strategic-grid div {

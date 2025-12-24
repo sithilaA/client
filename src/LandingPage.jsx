@@ -4,14 +4,18 @@ import { Link } from 'react-router-dom';
 function LandingPage() {
   return (
     <div>
-      <nav className="glass-nav">
+      <nav className="glass-nav" style={{ 
+        background: 'rgba(255, 255, 255, 0.1)', 
+        backdropFilter: 'blur(15px)', 
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)' 
+      }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '80px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <img src="/images/Logo.png" alt="SafePulse Logo" style={{ height: '50px' }} />
-            <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--text-color)' }}>SafePulse</span>
+            <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#fff' }}>SafePulse</span>
           </div>
           <div className="nav-links">
-            <Link to="/login" className="btn" style={{ background: 'transparent', color: 'var(--text-color)' }}>Login</Link>
+            <Link to="/login" className="btn" style={{ background: 'transparent', color: '#fff' }}>Login</Link>
             <Link to="/register" className="btn">Register</Link>
           </div>
         </div>
@@ -92,7 +96,7 @@ function LandingPage() {
       <section className="container" style={{ paddingTop: '2rem' }}>
         <div className="glass" style={{ padding: '3rem', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Strategic Vision</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', textAlign: 'left' }}>
+          <div className="strategic-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', textAlign: 'left' }}>
             <div>
               <h3 style={{ color: 'var(--secondary-color)', fontWeight: 'bold' }}>The Challenge</h3>
               <p style={{ fontSize: '1.05rem', color: '#555' }}>
@@ -130,7 +134,7 @@ function LandingPage() {
             <p style={{ fontSize: '1.2rem', marginBottom: '2rem', color: '#f0f0f0' }}>
               Be among the first riders worldwide to test our AI-driven safety engine.
             </p>
-            <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '2rem' }}>
+            <div className="cta-buttons" style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '2rem' }}>
               <Link to="/login" className="btn" style={{ padding: '15px 40px', fontSize: '1.1rem' }}>
                 Login
               </Link>

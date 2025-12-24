@@ -40,9 +40,8 @@ body {
 }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: transparent;
+  backdrop-filter: blur(5px);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -226,5 +225,27 @@ footer {
   .nav-links .btn {
     padding: 8px 16px;
     font-size: 0.9rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 1rem !important;
+  }
+
+  .cta-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  .strategic-grid {
+    text-align: center !important;
+    gap: 2rem !important;
+  }
+
+  .strategic-grid div {
+    text-align: center !important;
   }
 }

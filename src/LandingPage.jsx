@@ -96,7 +96,7 @@ function LandingPage() {
       <section className="container" style={{ paddingTop: '2rem' }}>
         <div className="glass" style={{ padding: '3rem', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Strategic Vision</h2>
-          <div className="strategic-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', textAlign: 'left' }}>
+          <div className="strategic-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
             <div>
               <h3 style={{ color: 'var(--secondary-color)', fontWeight: 'bold' }}>The Challenge</h3>
               <p style={{ fontSize: '1.05rem', color: '#555' }}>

@@ -60,7 +60,7 @@ function LandingPage() {
           />
           <FeatureCard 
             title="Privacy First" 
-            desc="Fully compliant with UK Children’s Code and GDPR. Data security by design."
+            desc="Fully compliant with Children’s Code and GDPR. Data security by design."
             icon="🛡️"
             img="/images/img (5).png"
           />
@@ -88,7 +88,7 @@ function LandingPage() {
           <div className="glass feature-card">
             <div className="feature-icon">📋</div>
             <h3>Compliance Logs</h3>
-            <p>"Exportable reports for Ofsted and KCSIE audits"</p>
+            <p>"Exportable reports for compliance audits"</p>
           </div>
         </div>
       </section>
@@ -97,7 +97,7 @@ function LandingPage() {
         <div className="glass" style={{ padding: '3rem' }}>
           <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Our Mission</h2>
           <p style={{ maxWidth: '850px', margin: '0 auto 3rem', fontSize: '1.2rem', color: '#333', fontWeight: '500' }}>
-            SafePulse is an innovative UK-based safety technology venture combining smart hardware with AI-driven analytics. 
+            SafePulse is an innovative safety technology venture combining smart hardware with AI-driven analytics. 
             We address the critical global gap in personal protection by moving beyond reactive tracking to proactive, 
             biometric-led safeguarding for children and vulnerable individuals.
           </p>

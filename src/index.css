@@ -197,8 +197,8 @@ footer {
 /* Responsive */
 @media (max-width: 768px) {
   .hero .container { flex-direction: column-reverse; text-align: center; }
-  .hero { padding-top: 2rem; align-items: flex-start; }
-  .hero-content { padding-right: 0; padding-top: 2rem; }
+  .hero { padding-top: 0; align-items: center; }
+  .hero-content { padding-right: 0; padding-top: 8rem; }
   h1 { font-size: 2.5rem; }
   .feature-card { text-align: center; }
   

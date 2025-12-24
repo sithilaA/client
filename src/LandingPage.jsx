@@ -93,9 +93,15 @@ function LandingPage() {
         </div>
       </section>
 
-      <section className="container" style={{ paddingTop: '2rem' }}>
-        <div className="glass" style={{ padding: '3rem', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Strategic Vision</h2>
+      <section className="container" style={{ margin: '5rem auto', textAlign: 'center' }}>
+        <div className="glass" style={{ padding: '3rem' }}>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Our Mission</h2>
+          <p style={{ maxWidth: '850px', margin: '0 auto 3rem', fontSize: '1.2rem', color: '#333', fontWeight: '500' }}>
+            At SafePulse, we believe every ride should be a safe one. Our technology bridges the gap between 
+            the thrill of motorcycling and the safety of modern automotive tech. Join us in revolutionizing 
+            road safety.
+          </p>
+          
           <div className="strategic-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
             <div>
               <h3 style={{ color: 'var(--secondary-color)', fontWeight: 'bold' }}>The Challenge</h3>
@@ -113,17 +119,6 @@ function LandingPage() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="container" style={{ margin: '5rem auto', textAlign: 'center' }}>
-        <div className="glass" style={{ padding: '3rem' }}>
-          <h2>Our Mission</h2>
-          <p style={{ maxWidth: '800px', margin: '0 auto', fontSize: '1.1rem', color: '#555' }}>
-            At SafePulse, we believe every ride should be a safe one. Our technology bridges the gap between 
-            the thrill of motorcycling and the safety of modern automotive tech. Join us in revolutionizing 
-            road safety.
-          </p>
         </div>
       </section>
 

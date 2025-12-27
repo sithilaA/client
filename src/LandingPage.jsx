@@ -1,7 +1,63 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 
 function LandingPage() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState({ type: '', message: '' });
+  const [loading, setLoading] = useState(false);
+
+  const scrollToNotify = (e) => {
+    e.preventDefault();
+    document.getElementById('notify-section').scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!email) {
+      setStatus({ type: 'error', message: 'Please enter an email address.' });
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setStatus({ type: 'error', message: 'Please enter a valid email address.' });
+      return;
+    }
+
+    setLoading(true);
+    setStatus({ type: '', message: '' });
+
+    try {
+      const response = await fetch('http://localhost:3000/api/notify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({ type: 'success', message: 'Thank you! We will notify you when we launch.' });
+        setEmail('');
+      } else {
+        setStatus({ type: 'error', message: data.message || 'Something went wrong. Please try again.' });
+      }
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Unable to connect to the server. Please try again later.' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
       <nav className="glass-nav" style={{ 
@@ -15,8 +71,7 @@ function LandingPage() {
             <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#fff' }}>SafePulse</span>
           </div>
           <div className="nav-links">
-            <Link to="/login" className="btn" style={{ background: 'transparent', color: '#fff' }}>Login</Link>
-            <Link to="/register" className="btn">Register</Link>
+            <a href="#notify-section" onClick={scrollToNotify} className="btn">Notify Me</a>
           </div>
         </div>
       </nav>
@@ -30,7 +85,7 @@ function LandingPage() {
               Real-time distress detection, biometric monitoring, and tamper-aware technology.
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-              <a href="#contact" className="btn">Get SafePulse</a>
+              <a href="#notify-section" onClick={scrollToNotify} className="btn">Notify Me</a>
               <a href="#features" className="btn" style={{ background: 'transparent', border: '1px solid #fff', color: '#fff' }}>Learn More</a>
             </div>
           </div>
@@ -123,21 +178,60 @@ function LandingPage() {
         </div>
       </section>
 
-      <section id="contact" className="cta-section">
+      <section id="notify-section" className="cta-section">
         <div className="container">
           <div className="glass" style={{ padding: '4rem 2rem', maxWidth: '800px', margin: '0 auto', color: '#fff' }}>
             <h2 style={{ color: '#fff' }}>Join the Global Community</h2>
             <p style={{ fontSize: '1.2rem', marginBottom: '2rem', color: '#f0f0f0' }}>
-              Be among the first riders worldwide to test our AI-driven safety engine.
+              Be among the first to test our AI-driven safety engine. Enter your email to get notified when we launch.
             </p>
-            <div className="cta-buttons" style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '2rem' }}>
-              <Link to="/login" className="btn" style={{ padding: '15px 40px', fontSize: '1.1rem' }}>
-                Login
-              </Link>
-              <Link to="/register" className="btn" style={{ padding: '15px 40px', fontSize: '1.1rem', background: 'transparent', border: '2px solid #fff', color: '#fff' }}>
-                Sign Up
-              </Link>
-            </div>
+            
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
+              <input
+                type="text"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                style={{
+                  padding: '15px 25px',
+                  width: '100%',
+                  maxWidth: '450px',
+                  borderRadius: '50px',
+                  border: 'none',
+                  fontSize: '1rem',
+                  outline: 'none',
+                  boxShadow: '0 4px 6px rgba(0,0,0,0.2)'
+                }}
+              />
+              <button 
+                type="submit" 
+                className="btn" 
+                disabled={loading}
+                style={{ 
+                  padding: '15px 60px', 
+                  fontSize: '1.1rem',
+                  opacity: loading ? 0.7 : 1,
+                  cursor: loading ? 'not-allowed' : 'pointer'
+                }}
+              >
+                {loading ? 'Subscribing...' : 'Notify Me'}
+              </button>
+            </form>
+
+            {status.message && (
+              <div style={{ 
+                marginTop: '2rem', 
+                padding: '15px', 
+                borderRadius: '12px', 
+                backgroundColor: status.type === 'success' ? 'rgba(0, 255, 136, 0.2)' : 'rgba(255, 99, 71, 0.2)',
+                color: '#fff',
+                border: `1px solid ${status.type === 'success' ? '#00ff88' : '#ff6347'}`,
+                maxWidth: '450px',
+                margin: '2rem auto 0'
+              }}>
+                {status.message}
+              </div>
+            )}
           </div>
         </div>
       </section>
